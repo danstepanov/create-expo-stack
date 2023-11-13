@@ -127,6 +127,9 @@ const command: GluegunCommand = {
 						type: 'authentication'
 					});
 				}
+				if (options.vexo) {
+					cliResults.packages.push({ name: 'vexo-analytics', type: 'analytics', options: {} });
+				}
 
 				// Destructure the results but set the projectName if the first param is passed in
 				if (first) {
@@ -180,6 +183,7 @@ const command: GluegunCommand = {
 				const navigationPackage = packages.find((p) => p.type === 'navigation') || undefined;
 				//   if there is no styling package, add the stylesheet package
 				const stylingPackage = packages.find((p) => p.type === 'styling');
+				const analyticsPackage = packages.find((p) => p.type === 'analytics');
 
 				let files: string[] = [];
 
@@ -196,6 +200,7 @@ const command: GluegunCommand = {
 					navigationPackage,
 					packageManager,
 					stylingPackage,
+					analyticsPackage,
 					toolbox
 				);
 

@@ -9,6 +9,7 @@ export function generateProjectFiles(
 	navigationPackage: AvailablePackages | undefined,
 	packageManager: PackageManager,
 	stylingPackage: AvailablePackages | undefined,
+	analyticsPackage: AvailablePackages | undefined,
 	toolbox: Toolbox
 ) {
 	const { projectName, packages, flags } = cliResults;
@@ -58,7 +59,8 @@ export function generateProjectFiles(
 				projectName,
 				packageManager,
 				packages,
-				stylingPackage
+				stylingPackage,
+				analyticsPackage
 			}
 		});
 
