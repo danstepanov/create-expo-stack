@@ -157,7 +157,7 @@ const command: GluegunCommand = {
             name: 'react-navigation',
             type: 'navigation',
             options: {
-              type: options.tabs ? 'tabs' : options.drawer ? 'drawer' : 'stack'
+              type: options.tabs ? 'tabs' : options.drawer ? 'tabs + drawer' : 'stack'
             }
           });
         }
@@ -168,7 +168,7 @@ const command: GluegunCommand = {
             name: 'expo-router',
             type: 'navigation',
             options: {
-              type: options.tabs ? 'tabs' : options.drawer ? 'drawer' : 'stack'
+              type: options.tabs ? 'tabs' : options.drawer ? 'tabs + drawer' : 'stack'
             }
           });
         }
@@ -241,7 +241,7 @@ const command: GluegunCommand = {
             if (p.type === 'navigation') {
               if (p.options?.type === 'tabs') {
                 script += '--tabs ';
-              } else if (p.options?.type === 'drawer') {
+              } else if (p.options?.type === 'tabs + drawer') {
                 script += '--drawer ';
               }
             }
