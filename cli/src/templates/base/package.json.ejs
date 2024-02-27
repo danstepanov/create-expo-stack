@@ -43,6 +43,7 @@
     <% } %>
     <% if (props.navigationPackage?.name === "react-navigation") { %>
       "@react-navigation/stack": "^6.3.17",
+      "@expo/vector-icons": "^14.0.0",
     <% } %>
     <% if (props.analyticsPackage?.name === "vexo-analytics") { %>
       "vexo-analytics": "^1.3.11",
@@ -52,7 +53,7 @@
       "expo-splash-screen": "~0.26.4",
     <% } %>
     <% if (props.navigationPackage?.options.type === "tabs" && props.navigationPackage?.name === "react-navigation") { %>
-    "@react-navigation/bottom-tabs": "^6.5.8",
+      "@react-navigation/bottom-tabs": "^6.5.8",
     <% } %>
 
     <% if ((props.navigationPackage?.options.type === "drawer + tabs") && (props.navigationPackage?.name === "react-navigation")) { %>
@@ -63,9 +64,8 @@
       "@react-navigation/drawer": "^6.6.6",
       "@react-navigation/bottom-tabs": "^6.5.8",
     <% } %>
-    
+
     <% if (props.navigationPackage?.name === "expo-router") { %>
-      "@expo/vector-icons": "^14.0.0",
       "expo-linking": "~6.2.2",
       "expo-router": "^3.4.7", 
       "expo-constants": "~15.4.5",     
@@ -115,7 +115,7 @@
       "prettier-plugin-tailwindcss": "^0.5.11",
     <% } %>
     <% if (props.stylingPackage?.name === "tamagui") { %>
-    "@tamagui/babel-plugin": "1.74.8",
+      "@tamagui/babel-plugin": "1.74.8",
     <% } %>
     "typescript": "^5.3.3"
   },
