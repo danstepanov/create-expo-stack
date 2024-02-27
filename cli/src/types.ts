@@ -1,36 +1,46 @@
 // export types
 export interface CliFlags {
-	noGit: boolean;
-	noInstall: boolean;
-	importAlias: string;
+  noGit: boolean;
+  noInstall: boolean;
+  overwrite: boolean;
+  importAlias: string | boolean;
+  packageManager: PackageManager;
 }
 
 export const availablePackages = [
-	'expo-router',
-	'expoRouter',
-	'firebase',
-	'nativewind',
-	'react-navigation',
-	'reactNavigation',
-	'reactnavigation',
-	'supabase',
-	'stylesheet',
-	'tamagui',
-	'vexo-analytics'
+  '@react-navigation/drawer',
+  'expo-router',
+  'expoRouter',
+  'firebase',
+  'nativewind',
+  'react-navigation',
+  'reactNavigation',
+  'react-native-gesture-handler',
+  'react-native-reanimated',
+  'reactnavigation',
+  'stylesheet',
+  'supabase',
+  'tamagui',
+  'vexo-analytics',
+  'restyle',
+  'unistyles',
+  'i18next'
 ] as const;
 
-export type NavigationTypes = 'stack' | 'tabs' | undefined;
+export type NavigationTypes = 'stack' | 'tabs' | 'drawer + tabs' | undefined;
 
 export type PackageManager = 'yarn' | 'npm' | 'pnpm' | 'bun';
 
+export type Internalization = 'i18next';
+
 export type AvailablePackages = {
-	name: (typeof availablePackages)[number];
-	type: 'navigation' | 'styling' | 'authentication' | 'analytics';
-	options?: { type?: NavigationTypes };
+  name: (typeof availablePackages)[number];
+  type: 'navigation' | 'styling' | 'authentication' | 'analytics' | 'internationalization';
+  options?: { type?: NavigationTypes };
 };
 
 export interface CliResults {
-	projectName: string;
-	packages: AvailablePackages[];
-	flags: CliFlags;
+  projectName: string;
+  packages: AvailablePackages[];
+  flags: CliFlags;
 }

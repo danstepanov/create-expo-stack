@@ -2,6 +2,19 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true
+    <% if (props.flags.importAlias) { %>
+      ,
+    "baseUrl": ".",
+    "paths": {
+      <% if  (props.navigationPackage?.name === "expo-router" && props.flags.importAlias === true) { %>
+      "~/*": ["*"]
+      <% } else if  (props.flags.importAlias === true) { %>
+      "~/*": ["src/*"]
+      <% } else { %>
+      "<%= props.flags.importAlias %>": ["src/*"]
+      <% } %>
+    }
+    <% } %>
   <% if (props.navigationPackage?.name === 'expo-router') { %>
   },
   "include": [

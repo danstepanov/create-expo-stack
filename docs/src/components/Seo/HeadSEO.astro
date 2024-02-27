@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { SITE, OPEN_GRAPH } from "../../consts";
+import { SITE_URL } from "@/lib/utils";
+import {slugifyStr} from "../../lib/slugify"
+
+type Props = { canonicalUrl: URL } & CollectionEntry<"docs">["data"];
+const { ogLocale, image, title, description, canonicalUrl,lang } = Astro.props;
+const formattedContentTitle = `${title} | ${SITE.title}`; 
+const imageAlt = image?.alt ?? OPEN_GRAPH.image.alt;
+
+const ogImageData = {
+  title: title,
+  description: description,
+  pagePath: Astro.url.pathname,
+};
+
+const imageUrl = new URL(
+  `/${lang}/${slugifyStr(title)}.png`,
+  Astro.url.origin
+).href;
+  
+---
+<!-- Page Metadata -->
+<link rel="canonical" href={canonicalUrl} />
+<meta name="description" property="og:description" content={SITE.description} />
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content={formattedContentTitle} />
+<meta property="og:type" content="article" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:locale" content={SITE.defaultLanguage} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:site_name" content={SITE.title} />
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={OPEN_GRAPH.twitter} />
+<meta name="twitter:title" content={formattedContentTitle} />
+<meta name="twitter:description" content={SITE.description} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={imageAlt} /> 

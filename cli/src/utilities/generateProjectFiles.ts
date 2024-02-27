@@ -2,68 +2,81 @@ import { Toolbox } from 'gluegun/build/types/domain/toolbox';
 import { AvailablePackages, CliResults, PackageManager } from '../types';
 
 export function generateProjectFiles(
-	authenticationPackage: AvailablePackages | undefined,
-	cliResults: CliResults,
-	files: string[],
-	formattedFiles: any[],
-	navigationPackage: AvailablePackages | undefined,
-	packageManager: PackageManager,
-	stylingPackage: AvailablePackages | undefined,
-	analyticsPackage: AvailablePackages | undefined,
-	toolbox: Toolbox
+  authenticationPackage: AvailablePackages | undefined,
+  cliResults: CliResults,
+  files: string[],
+  formattedFiles: any[],
+  navigationPackage: AvailablePackages | undefined,
+  packageManager: PackageManager,
+  stylingPackage: AvailablePackages | undefined,
+  analyticsPackage: AvailablePackages | undefined,
+  toolbox: Toolbox,
+  internalizationPackage: AvailablePackages | undefined
 ) {
-	const { projectName, packages, flags } = cliResults;
+  const { projectName, packages, flags } = cliResults;
 
-	return files.reduce((prev, file) => {
-		const template = file;
-		let target = `${projectName}/` + file.replace('.ejs', '');
+  return files.reduce((prev, file) => {
+    const template = file;
+    let target = file.replace('.ejs', '');
 
-		if (authenticationPackage?.name === 'supabase') {
-			target = target.replace('packages/supabase/', '');
-		}
+    if (authenticationPackage?.name === 'supabase') {
+      target = target.replace('packages/supabase/', '');
+    }
 
-		if (authenticationPackage?.name === 'firebase') {
-			target = target.replace('packages/firebase/', '');
-		}
+    if (authenticationPackage?.name === 'firebase') {
+      target = target.replace('packages/firebase/', '');
+    }
 
-		target = target.replace('base/', '');
+    target = target.replace('base/', '');
 
-		if (stylingPackage?.name === 'tamagui') {
-			target = target.replace('packages/tamagui/', '');
-		} else if (stylingPackage?.name === 'nativewind') {
-			target = target.replace('packages/nativewind/', '');
-		}
+    if (stylingPackage?.name === 'tamagui') {
+      target = target.replace('packages/tamagui/', '');
+    } else if (stylingPackage?.name === 'unistyles') {
+      target = target.replace('packages/unistyles/', '');
+    } else if (stylingPackage?.name === 'nativewind') {
+      target = target.replace('packages/nativewind/', '');
+    } else if (stylingPackage?.name === 'restyle') {
+      target = target.replace('packages/restyle/', '');
+    }
 
-		if (navigationPackage?.name === 'react-navigation') {
-			target = target.replace('packages/react-navigation/App.tsx', 'App.tsx');
-			target = target.replace('packages/react-navigation/', 'src/');
-		}
+    if (navigationPackage?.name === 'react-navigation') {
+      target = target.replace('packages/react-navigation/App.tsx', 'App.tsx');
+      target = target.replace('packages/react-navigation/', '');
+    }
 
-		if (navigationPackage?.name === 'expo-router') {
-			target = target.replace('packages/expo-router/', '');
-			if (navigationPackage?.options?.type === 'stack') {
-				target = target.replace('stack/', '');
-			}
-			if (navigationPackage?.options?.type === 'tabs') {
-				target = target.replace('tabs/', '');
-			}
-		}
+    if (navigationPackage?.name === 'expo-router') {
+      target = target.replace('packages/expo-router/', '');
+      if (navigationPackage?.options?.type === 'stack') {
+        target = target.replace('stack/', '');
+      }
+      if (navigationPackage?.options?.type === 'tabs') {
+        target = target.replace('tabs/', '');
+      }
+      if (navigationPackage?.options?.type === 'drawer + tabs') {
+        target = target.replace('drawer/', '');
+      }
+    }
 
-		const gen = toolbox.template.generate({
-			template,
-			target: './' + target,
-			props: {
-				authenticationPackage,
-				flags,
-				navigationPackage,
-				projectName,
-				packageManager,
-				packages,
-				stylingPackage,
-				analyticsPackage
-			}
-		});
+    if (internalizationPackage?.name === 'i18next') {
+      target = target.replace('packages/i18next/', '');
+    }
 
-		return prev.concat([gen]);
-	}, formattedFiles);
+    const gen = toolbox.template.generate({
+      template,
+      target: `./${projectName}/` + target,
+      props: {
+        authenticationPackage,
+        flags,
+        navigationPackage,
+        projectName,
+        packageManager,
+        packages,
+        stylingPackage,
+        analyticsPackage,
+        internalizationPackage
+      }
+    });
+
+    return prev.concat([gen]);
+  }, formattedFiles);
 }

@@ -1,0 +1,64 @@
+---
+import { type SidebarItemLink } from "../../consts";
+import { getIsRtlFromUrl, getLanguageFromURL } from "../../languages";
+import { paginate } from "../../utils";
+import LeftArrow from "../Icons/LeftArrow.astro";
+import RightArrow from "../Icons/RightArrow.astro";
+import { buttonVariants } from "../ui/button";
+import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
+const currentPage = Astro.url.pathname;
+const hasTrailing = currentPage.endsWith("/");
+const currentPageMatch = currentPage.slice(
+  1,
+  hasTrailing ? -1 : currentPage.length,
+) as SidebarItemLink;
+
+const langCode = getLanguageFromURL(currentPage);
+const { next, prev } = paginate(langCode, currentPageMatch);
+
+const { pathname } = Astro.url;
+const isRtl = getIsRtlFromUrl(pathname);
+---
+
+<div class="flex flex-row items-center justify-between mt-14">
+  <div>
+    {
+      prev ? (
+        <a
+          class={buttonVariants({ variant: "outline" })}
+          rel="prev"
+          href={Astro.site?.pathname + prev.link}
+        >
+          <>
+            {isRtl ? (
+              <ChevronRightIcon className="ml-2 h-4 w-4" />
+            ) : (
+              <ChevronLeftIcon className="mr-2 h-4 w-4" />
+            )}
+            {prev.text}
+          </>
+        </a>
+      ) : null
+    }
+  </div>
+  <div>
+    {
+      next ? (
+        <a
+          rel="next"
+          class={buttonVariants({ variant: "outline" })}
+          href={Astro.site?.pathname + next.link}
+        >
+          <>
+            {next.text}
+            {isRtl ? (
+              <ChevronLeftIcon className="mr-2 h-4 w-4" />
+            ) : (
+              <ChevronRightIcon className="ml-2 h-4 w-4" />
+            )}
+          </>
+        </a>
+      ) : null
+    }
+  </div>
+</div>

@@ -1,3 +1,12 @@
+<% if (props.stylingPackage?.name === "nativewind") { %>
+import './global.css';
+<% } %>
+<% if (props.stylingPackage?.name === "unistyles") { %>
+import './unistyles';
+<% } %>
+<% if (props.internalizationPackage?.name === "i18next") { %>
+  import './translation';
+<% } %>
 import "react-native-gesture-handler";
 <% if (props.stylingPackage?.name === "tamagui") { %>
 	import React, { useEffect } from "react";
@@ -8,8 +17,12 @@ import "react-native-gesture-handler";
 	import config from './tamagui.config'
 
 	SplashScreen.preventAutoHideAsync();
+<% } else if (props.stylingPackage?.name === "restyle") { %>
+  import { ThemeProvider } from '@shopify/restyle';
+  import { theme } from 'theme';
 <% } %>
-import RootStack from "./src/navigation";
+
+import RootStack from "./navigation";
 
 <% if (props.analyticsPackage?.name === "vexo-analytics") { %>
 import { vexo } from 'vexo-analytics';
@@ -42,7 +55,13 @@ export default function App() {
 				<RootStack />
 			</TamaguiProvider>
 		);
-	<% } else { %>
+	<% } else if (props.stylingPackage?.name === "restyle") { %>
+		return (
+      <ThemeProvider theme={theme}>
+        <RootStack />
+      </ThemeProvider>
+    );
+	<% } else { %> 
 		return <RootStack />;
 	<% } %>
 }
