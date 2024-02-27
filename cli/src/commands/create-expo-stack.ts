@@ -255,7 +255,7 @@ const command: GluegunCommand = {
         }
 
         // Analytics packages
-        if (options.vexo) {
+        if (options.vexoAnalytics || options['vexo-analytics'] || options.vexoanalytics) {
           cliResults.packages.push({ name: 'vexo-analytics', type: 'analytics', options: {} });
         }
 
