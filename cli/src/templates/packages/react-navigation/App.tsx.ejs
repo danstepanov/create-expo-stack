@@ -22,16 +22,17 @@ import "react-native-gesture-handler";
   import { theme } from 'theme';
 <% } %>
 
-import RootStack from "./navigation";
-
 <% if (props.analyticsPackage?.name === "vexo-analytics") { %>
-import { vexo } from 'vexo-analytics';
-// If you don't have an API Key:
-//  1. Create an account/login in https://vexo.co
-//  2. Copy the key and add it to your `.env` file: VEXO_API_KEY=123abc
-vexo(process.env.VEXO_API_KEY);
-<% } %>
+  import { vexo } from 'vexo-analytics';
 
+  vexo(process.env.VEXO_API_KEY); // eslint-disable-line
+
+  import RootStack from "./navigation"; // eslint-disable-line
+<% } else { %>
+
+  import RootStack from "./navigation";
+
+<% } %>
 
 export default function App() {
 	<% if (props.stylingPackage?.name === "tamagui") { %>

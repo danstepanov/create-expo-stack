@@ -75,6 +75,8 @@ export async function runCLI(toolbox: Toolbox, projectName: string): Promise<Cli
         options: {}
       });
       success(`Awesome choice! We'll use vexo-analytics!`);
+    } else {
+      success(`No problem, skipping analytics for now.`);
     }
   } else {
     success(`No problem, skipping navigation for now.`);
