@@ -25,14 +25,10 @@ import "react-native-gesture-handler";
 <% if (props.analyticsPackage?.name === "vexo-analytics") { %>
   import { vexo } from 'vexo-analytics';
 
-  vexo(process.env.VEXO_API_KEY); // eslint-disable-line
-
-  import RootStack from "./navigation"; // eslint-disable-line
-<% } else { %>
-
-  import RootStack from "./navigation";
-
+  vexo(process.env.EXPO_PUBLIC_VEXO_API_KEY);
 <% } %>
+
+import RootStack from "./navigation";
 
 export default function App() {
 	<% if (props.stylingPackage?.name === "tamagui") { %>
