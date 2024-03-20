@@ -81,6 +81,20 @@ export async function printOutput(
     );
   }
 
+  const printVexoSteps = () => {
+    info(``);
+    highlight('Head over to https://vexo.co to create a new Vexo project.');
+    info(``);
+    highlight(`Get the API key:`);
+    info(`1. Create a new app in your vexo dashboard:`);
+    highlight(`https://vexo.co/apps`);
+    info(`2. Find your API key on your app settings page.`);
+    info(`3. Copy the key and paste it into your .env file.`);
+    info(`4. Optionally, follow the docs to get started with Vexo:`);
+    highlight(`https://docs.vexo.co/`);
+    info(``);
+  };
+
   //	check if packages includes package with name "supabase"
   if (cliResults.packages.some((pkg) => pkg.name === 'supabase')) {
     success(`Success! 🎉 Now, here's what's next:`);
@@ -93,7 +107,9 @@ export async function printOutput(
     info(`3. Copy these keys and paste them into your .env file.`);
     info(`4. Optionally, follow one of these guides to get started with Supabase:`);
     highlight(`https://docs.expo.dev/guides/using-supabase/#next-steps`);
-    info(``);
+    if (cliResults.packages.some((pkg) => pkg.name === 'vexo-analytics')) {
+      printVexoSteps();
+    }
     success(`Once you're done, run the following to get started: `);
     info(``);
   } else if (cliResults.packages.some((pkg) => pkg.name === 'firebase')) {
@@ -108,11 +124,19 @@ export async function printOutput(
     info(`3. Copy these keys and paste them into your .env file.`);
     info(`4. Optionally, follow one of these guides to get started with Firebase:`);
     highlight(`https://docs.expo.dev/guides/using-firebase/#next-steps`);
-    info(``);
+    if (cliResults.packages.some((pkg) => pkg.name === 'vexo-analytics')) {
+      printVexoSteps();
+    }
     success(`Once you're done, run the following to get started: `);
     info(``);
   } else {
-    success('Success! 🎉 Now, just run the following to get started: ');
+    if (cliResults.packages.some((pkg) => pkg.name === 'vexo-analytics')) {
+      success(`Success! 🎉 Now, here's what's next:`);
+      printVexoSteps();
+      success(`Once you're done, run the following to get started: `);
+    } else {
+      success('Success! 🎉 Now, just run the following to get started: ');
+    }
     info(``);
   }
   info(`cd ${projectName}`);

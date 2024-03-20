@@ -21,6 +21,7 @@ export const availablePackages = [
   'stylesheet',
   'supabase',
   'tamagui',
+  'vexo-analytics',
   'restyle',
   'unistyles',
   'i18next'
@@ -34,7 +35,7 @@ export type Internalization = 'i18next';
 
 export type AvailablePackages = {
   name: (typeof availablePackages)[number];
-  type: 'navigation' | 'styling' | 'authentication' | 'internationalization';
+  type: 'navigation' | 'styling' | 'authentication' | 'analytics' | 'internationalization';
   options?: { type?: NavigationTypes };
 };
 

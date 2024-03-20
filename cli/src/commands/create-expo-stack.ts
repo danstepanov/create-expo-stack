@@ -259,6 +259,11 @@ const command: GluegunCommand = {
           });
         }
 
+        // Analytics packages
+        if (options.vexoAnalytics || options['vexo-analytics'] || options.vexoanalytics) {
+          cliResults.packages.push({ name: 'vexo-analytics', type: 'analytics', options: {} });
+        }
+
         // By this point, all cliResults should be set
         info('');
         highlight('Your project configuration:');
@@ -318,6 +323,7 @@ const command: GluegunCommand = {
         // if there is no styling package, add the stylesheet package
         const stylingPackage = packages.find((p) => p.type === 'styling');
         const internalizationPackage = packages.find((p) => p.type === 'internationalization');
+        const analyticsPackage = packages.find((p) => p.type === 'analytics');
 
         let files: string[] = [];
 
@@ -326,6 +332,7 @@ const command: GluegunCommand = {
           files,
           navigationPackage,
           stylingPackage,
+          analyticsPackage,
           toolbox,
           cliResults,
           internalizationPackage
@@ -342,6 +349,7 @@ const command: GluegunCommand = {
           navigationPackage,
           packageManager,
           stylingPackage,
+          analyticsPackage,
           toolbox,
           internalizationPackage
         );

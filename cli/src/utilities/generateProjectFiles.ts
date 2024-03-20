@@ -9,6 +9,7 @@ export function generateProjectFiles(
   navigationPackage: AvailablePackages | undefined,
   packageManager: PackageManager,
   stylingPackage: AvailablePackages | undefined,
+  analyticsPackage: AvailablePackages | undefined,
   toolbox: Toolbox,
   internalizationPackage: AvailablePackages | undefined
 ) {
@@ -60,6 +61,10 @@ export function generateProjectFiles(
       target = target.replace('packages/i18next/', '');
     }
 
+    if (analyticsPackage?.name === 'vexo-analytics') {
+      target = target.replace('packages/vexo-analytics/', '');
+    }
+
     const gen = toolbox.template.generate({
       template,
       target: `./${projectName}/` + target,
@@ -71,6 +76,7 @@ export function generateProjectFiles(
         packageManager,
         packages,
         stylingPackage,
+        analyticsPackage,
         internalizationPackage
       }
     });

@@ -65,6 +65,19 @@ export async function runCLI(toolbox: Toolbox, projectName: string): Promise<Cli
       });
     }
     success(`Great, we'll use ${navigationSelect}!`);
+
+    const useVexo = await prompt.confirm('Would you like to use Vexo for Analytics?', true);
+
+    if (useVexo) {
+      cliResults.packages.push({
+        name: 'vexo-analytics',
+        type: 'analytics',
+        options: {}
+      });
+      success(`Awesome choice! We'll use vexo-analytics!`);
+    } else {
+      success(`No problem, skipping analytics for now.`);
+    }
   } else {
     success(`No problem, skipping navigation for now.`);
   }
