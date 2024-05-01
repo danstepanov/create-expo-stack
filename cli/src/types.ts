@@ -24,7 +24,8 @@ export const availablePackages = [
   'tamagui',
   'restyle',
   'unistyles',
-  'i18next'
+  'i18next',
+  'zustand'
 ] as const;
 
 export type AuthenticationSelect = 'supabase' | 'firebase' | undefined;
@@ -36,6 +37,8 @@ export type NavigationTypes = 'stack' | 'tabs' | 'drawer + tabs' | undefined;
 export type StylingSelect = 'nativewind' | 'restyle' | 'stylesheet' | 'tamagui' | 'unistyles' | 'nativewindui';
 
 export type PackageManager = 'yarn' | 'npm' | 'pnpm' | 'bun';
+
+export type StateManagementSelect = 'zustand' | undefined;
 
 export type Internalization = 'i18next';
 
@@ -60,7 +63,7 @@ export type SelectedComponents =
 
 export type AvailablePackages = {
   name: (typeof availablePackages)[number];
-  type: 'navigation' | 'styling' | 'authentication' | 'internationalization';
+  type: 'navigation' | 'styling' | 'authentication' | 'internationalization' | 'state_management';
   options?: { selectedComponents?: SelectedComponents[]; type?: NavigationTypes };
 };
 
