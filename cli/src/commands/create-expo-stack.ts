@@ -107,6 +107,10 @@ const command: GluegunCommand = {
         cliResults.flags.overwrite = true;
       }
 
+      if (options.eas) {
+        cliResults.flags.eas = true;
+      }
+
       await validateProjectName(
         exists,
         removeAsync,
@@ -305,6 +309,11 @@ const command: GluegunCommand = {
           });
         }
 
+        // Analytics packages
+        if (options.vexoAnalytics || options['vexo-analytics'] || options.vexoanalytics) {
+          cliResults.packages.push({ name: 'vexo-analytics', type: 'analytics' });
+        }
+
         // By this point, all cliResults should be set
         info('');
         highlight('Your project configuration:');
@@ -356,6 +365,10 @@ const command: GluegunCommand = {
             script += `--${cliResults.flags.packageManager}`;
           }
 
+          if (cliResults.flags.eas) {
+            script += ` --eas`;
+          }
+
           return script;
         };
 
@@ -369,6 +382,7 @@ const command: GluegunCommand = {
         // if there is no styling package, add the stylesheet package
         const stylingPackage = packages.find((p) => p.type === 'styling');
         const internalizationPackage = packages.find((p) => p.type === 'internationalization');
+        const analyticsPackage = packages.find((p) => p.type === 'analytics');
 
         //add the state management package if it is selected
         const stateManagementPackage = packages.find((p) => p.type === 'state_management') || undefined;
@@ -380,6 +394,7 @@ const command: GluegunCommand = {
           files,
           navigationPackage,
           stylingPackage,
+          analyticsPackage,
           toolbox,
           cliResults,
           internalizationPackage,
@@ -391,6 +406,7 @@ const command: GluegunCommand = {
 
         formattedFiles = generateProjectFiles(
           authenticationPackage,
+          analyticsPackage,
           cliResults,
           files,
           formattedFiles,

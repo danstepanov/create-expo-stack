@@ -4,6 +4,7 @@ import { CliResults } from '../types';
 export type PackageManager = 'npm' | 'pnpm' | 'yarn' | 'bun';
 export type PackageManagerRunnerX = 'npx' | 'pnpx' | 'yarn dlx' | 'bunx';
 
+// TODO: Rework this function as it is pretty messy
 export function getPackageManager(toolbox: Toolbox, cliResults: CliResults): PackageManager {
   const {
     parameters: { options }
@@ -14,8 +15,13 @@ export function getPackageManager(toolbox: Toolbox, cliResults: CliResults): Pac
   if (options.pnpm) return 'pnpm';
   if (options.bun) return 'bun';
 
+  if (cliResults.flags.packageManager && cliResults.flags.packageManager !== 'npm') {
+    return cliResults.flags.packageManager;
+  }
+
   // This environment variable is set by npm and yarn but pnpm seems less consistent
   const userAgent = process.env.npm_config_user_agent;
+
   if (userAgent) {
     if (userAgent.startsWith('yarn')) {
       return 'yarn';
@@ -26,9 +32,11 @@ export function getPackageManager(toolbox: Toolbox, cliResults: CliResults): Pac
     } else {
       return 'npm';
     }
-  } else {
+  } else if (cliResults.flags.packageManager) {
     // If no user agent is set, assume npm
     return cliResults.flags.packageManager;
+  } else {
+    return 'npm';
   }
 }
 export function getPackageManagerRunnerX(toolbox: Toolbox, cliResults: CliResults): PackageManagerRunnerX {
@@ -69,4 +77,10 @@ export function getDefaultPackageManagerVersion() {
   if (userAgent) {
     return userAgent.split(' ')[0].split('/')[1];
   }
+}
+
+export function getVersionForPackageManager(packageManager: PackageManager): string {
+  const version = require('child_process').execSync(`${packageManager} --version`);
+
+  return version.toString().replace('\n', '');
 }

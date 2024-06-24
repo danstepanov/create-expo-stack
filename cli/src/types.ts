@@ -5,6 +5,7 @@ export interface CliFlags {
   overwrite: boolean;
   importAlias: string | boolean;
   packageManager: PackageManager;
+  eas: boolean;
 }
 
 export const availablePackages = [
@@ -26,6 +27,7 @@ export const availablePackages = [
   'unistyles',
   'i18next',
   'zustand'
+  'vexo-analytics',
 ] as const;
 
 export type AuthenticationSelect = 'supabase' | 'firebase' | undefined;
@@ -63,7 +65,7 @@ export type SelectedComponents =
 
 export type AvailablePackages = {
   name: (typeof availablePackages)[number];
-  type: 'navigation' | 'styling' | 'authentication' | 'internationalization' | 'state_management';
+  type: 'navigation' | 'styling' | 'authentication' | 'internationalization' | 'state_management' | 'analytics';
   options?: { selectedComponents?: SelectedComponents[]; type?: NavigationTypes };
 };
 

@@ -2,8 +2,6 @@ import { intro, outro } from "@clack/prompts";
 import color from "picocolors";
 import util from "util";
 
-import { expoStackTheme } from "./constants.js";
-
 import {
   initializeProject,
   printOutput,
@@ -33,9 +31,9 @@ async function main() {
 
   await setPackageManager(cliResults);
 
-  await setNavigation(cliResults);
+  const navigationSelect = await setNavigation(cliResults);
 
-  await setStyles(cliResults);
+  await setStyles(cliResults, navigationSelect);
 
   await setAuthentication(cliResults);
 
@@ -58,7 +56,6 @@ async function main() {
     {
       w: 50,
       h: 5,
-      // hAlign: 'center',
       stringify: false,
       marks: {
         nw: color.yellow("╭"),
@@ -70,7 +67,6 @@ async function main() {
         sw: color.yellow("╰"),
         w: color.yellow("│"),
       },
-      // hAlign: 'middle',
     },
     `Click the link to download your project!\n\n${color.magenta(projectURL)}`,
   );

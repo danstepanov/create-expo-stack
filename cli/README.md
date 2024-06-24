@@ -53,7 +53,7 @@ Each project is generated based on the results of the CLI, on a per-file basis. 
 | React              | UI Framework        | v18     | The most popular UI framework in the world     |
 | TypeScript         | Language            | v5      | Static typechecking                            |
 | React Navigation   | Navigation          | v6      | Performant and consistent navigation framework |
-| Expo               | SDK                 | v50     | Allows (optional) Expo modules                 |
+| Expo               | SDK                 | v51     | Allows (optional) Expo modules                 |
 | Expo Font          | Custom Fonts        | v11     | Import custom fonts                            |
 | Expo Linking       | URL Handling        | v5      | Open your app via a URL                        |
 | Expo Router        | Navigation          | v3      | File-based routing in React-Native             |
@@ -122,6 +122,21 @@ Thanks go to these wonderful people:
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/dannyhw">
+            <img src="https://avatars.githubusercontent.com/u/3481514?v=4" width="100;" alt="dannyhw"/>
+            <br />
+            <sub><b>Daniel Williams</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/PickleNik">
+            <img src="https://avatars.githubusercontent.com/u/31113245?v=4" width="100;" alt="PickleNik"/>
+            <br />
+            <sub><b>Null</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
         <a href="https://github.com/frankcalise">
             <img src="https://avatars.githubusercontent.com/u/374022?v=4" width="100;" alt="frankcalise"/>
             <br />
@@ -134,8 +149,7 @@ Thanks go to these wonderful people:
             <br />
             <sub><b>Ludwig</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/mrzachnugent">
             <img src="https://avatars.githubusercontent.com/u/63797719?v=4" width="100;" alt="mrzachnugent"/>
@@ -144,17 +158,10 @@ Thanks go to these wonderful people:
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/PickleNik">
-            <img src="https://avatars.githubusercontent.com/u/31113245?v=4" width="100;" alt="PickleNik"/>
+        <a href="https://github.com/alejorod">
+            <img src="https://avatars.githubusercontent.com/u/6730160?v=4" width="100;" alt="alejorod"/>
             <br />
-            <sub><b>Null</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/dannyhw">
-            <img src="https://avatars.githubusercontent.com/u/3481514?v=4" width="100;" alt="dannyhw"/>
-            <br />
-            <sub><b>Daniel Williams</b></sub>
+            <sub><b>Alejo Rodriguez</b></sub>
         </a>
     </td>
     <td align="center">
@@ -170,15 +177,15 @@ Thanks go to these wonderful people:
             <br />
             <sub><b>Finn Bayer</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/saimon24">
             <img src="https://avatars.githubusercontent.com/u/2514208?v=4" width="100;" alt="saimon24"/>
             <br />
             <sub><b>Simon Grimm</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/todevmilen">
             <img src="https://avatars.githubusercontent.com/u/78319110?v=4" width="100;" alt="todevmilen"/>
@@ -208,6 +215,14 @@ Thanks go to these wonderful people:
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/Savinvadim1312">
+            <img src="https://avatars.githubusercontent.com/u/16936043?v=4" width="100;" alt="Savinvadim1312"/>
+            <br />
+            <sub><b>Savin Vadim</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
         <a href="https://github.com/coyksdev">
             <img src="https://avatars.githubusercontent.com/u/19565694?v=4" width="100;" alt="coyksdev"/>
             <br />
@@ -220,8 +235,7 @@ Thanks go to these wonderful people:
             <br />
             <sub><b>Andrew Levy</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/gialencar">
             <img src="https://avatars.githubusercontent.com/u/11895696?v=4" width="100;" alt="gialencar"/>
@@ -244,17 +258,46 @@ Thanks go to these wonderful people:
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/gwenoleR">
-            <img src="https://avatars.githubusercontent.com/u/10418241?v=4" width="100;" alt="gwenoleR"/>
+        <a href="https://github.com/debugtheworldbot">
+            <img src="https://avatars.githubusercontent.com/u/62830430?v=4" width="100;" alt="debugtheworldbot"/>
+            <br />
+            <sub><b>Pipizhu</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
+        <a href="https://github.com/bautistaaa">
+            <img src="https://avatars.githubusercontent.com/u/3660667?v=4" width="100;" alt="bautistaaa"/>
             <br />
             <sub><b>Null</b></sub>
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/boek">
-            <img src="https://avatars.githubusercontent.com/u/1250545?v=4" width="100;" alt="boek"/>
+        <a href="https://github.com/YounessHassoune">
+            <img src="https://avatars.githubusercontent.com/u/36106440?v=4" width="100;" alt="YounessHassoune"/>
             <br />
-            <sub><b>Jeff Boek</b></sub>
+            <sub><b>YOUNESS HASSOUNE</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Hacksore">
+            <img src="https://avatars.githubusercontent.com/u/996134?v=4" width="100;" alt="Hacksore"/>
+            <br />
+            <sub><b>Sean Boult</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/asapMaki">
+            <img src="https://avatars.githubusercontent.com/u/30200380?v=4" width="100;" alt="asapMaki"/>
+            <br />
+            <sub><b>Mahir Kadić</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Joehoel">
+            <img src="https://avatars.githubusercontent.com/u/31251240?v=4" width="100;" alt="Joehoel"/>
+            <br />
+            <sub><b>Joël Kuijper</b></sub>
         </a>
     </td>
     <td align="center">
@@ -266,45 +309,31 @@ Thanks go to these wonderful people:
     </td></tr>
 <tr>
     <td align="center">
-        <a href="https://github.com/Joehoel">
-            <img src="https://avatars.githubusercontent.com/u/31251240?v=4" width="100;" alt="Joehoel"/>
+        <a href="https://github.com/boek">
+            <img src="https://avatars.githubusercontent.com/u/1250545?v=4" width="100;" alt="boek"/>
             <br />
-            <sub><b>Joël Kuijper</b></sub>
+            <sub><b>Jeff Boek</b></sub>
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/asapMaki">
-            <img src="https://avatars.githubusercontent.com/u/30200380?v=4" width="100;" alt="asapMaki"/>
-            <br />
-            <sub><b>Mahir Kadić</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/Hacksore">
-            <img src="https://avatars.githubusercontent.com/u/996134?v=4" width="100;" alt="Hacksore"/>
-            <br />
-            <sub><b>Sean Boult</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/YounessHassoune">
-            <img src="https://avatars.githubusercontent.com/u/36106440?v=4" width="100;" alt="YounessHassoune"/>
-            <br />
-            <sub><b>YOUNESS HASSOUNE</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/bautistaaa">
-            <img src="https://avatars.githubusercontent.com/u/3660667?v=4" width="100;" alt="bautistaaa"/>
+        <a href="https://github.com/gwenoleR">
+            <img src="https://avatars.githubusercontent.com/u/10418241?v=4" width="100;" alt="gwenoleR"/>
             <br />
             <sub><b>Null</b></sub>
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/debugtheworldbot">
-            <img src="https://avatars.githubusercontent.com/u/62830430?v=4" width="100;" alt="debugtheworldbot"/>
+        <a href="https://github.com/claudesortwell">
+            <img src="https://avatars.githubusercontent.com/u/41422239?v=4" width="100;" alt="claudesortwell"/>
             <br />
-            <sub><b>Pipizhu</b></sub>
+            <sub><b>Claude</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/falcoagustin">
+            <img src="https://avatars.githubusercontent.com/u/15353019?v=4" width="100;" alt="falcoagustin"/>
+            <br />
+            <sub><b>Agustin Falco</b></sub>
         </a>
     </td></tr>
 </table>

@@ -1,12 +1,23 @@
 import { Toolbox } from 'gluegun/build/types/domain/toolbox';
-import { AvailablePackages, CliResults } from '../types';
-import { getPackageManager } from './getPackageManager';
+import os from 'os';
+import {
+  AuthenticationSelect,
+  AvailablePackages,
+  CliResults,
+  Internalization,
+  NavigationSelect,
+  NavigationTypes,
+  StylingSelect
+} from '../types';
+import { getPackageManager, getVersionForPackageManager } from './getPackageManager';
+import { storeConfigAnalytics } from './configAnalytics';
 
 export function configureProjectFiles(
   authenticationPackage: AvailablePackages | undefined,
   files: string[],
   navigationPackage: AvailablePackages | undefined,
   stylingPackage: AvailablePackages | undefined,
+  analyticsPackage: AvailablePackages | undefined,
   toolbox: Toolbox,
   cliResults: CliResults,
   internalizationPackage: AvailablePackages | undefined,
@@ -33,7 +44,7 @@ export function configureProjectFiles(
 
   const packageManager = getPackageManager(toolbox, cliResults);
   // Add npmrc file if user is using pnpm and expo router
-  if (packageManager === 'pnpm' && navigationPackage?.name === 'expo-router') {
+  if (packageManager === 'pnpm') {
     baseFiles.push('base/.npmrc.ejs');
   }
 
@@ -45,10 +56,14 @@ export function configureProjectFiles(
       'base/package.json.ejs',
       'base/.gitignore.ejs',
       'base/prettier.config.js.ejs',
-      'packages/nativewindui/app/_layout.tsx.ejs',
-      'packages/nativewindui/app/+not-found.tsx.ejs',
-      'packages/nativewindui/app/index.tsx.ejs',
-      'packages/nativewindui/app/modal.tsx.ejs',
+      'packages/expo-router/metro.config.js.ejs',
+      'packages/nativewindui/components/BackButton.tsx.ejs',
+      'packages/nativewindui/components/Button.tsx.ejs',
+      'packages/nativewindui/components/Container.tsx.ejs',
+      'packages/nativewindui/components/EditScreenInfo.tsx.ejs',
+      'packages/nativewindui/components/HeaderButton.tsx.ejs',
+      'packages/nativewindui/components/ScreenContent.tsx.ejs',
+      'packages/nativewindui/components/TabBarIcon.tsx.ejs',
       'packages/nativewindui/components/nativewindui/Text.tsx.ejs',
       'packages/nativewindui/components/nativewindui/ThemeToggle.tsx.ejs',
       'packages/nativewindui/lib/useColorScheme.tsx.ejs',
@@ -58,10 +73,46 @@ export function configureProjectFiles(
       'packages/nativewindui/theme/index.ts.ejs',
       'packages/nativewindui/tailwind.config.js.ejs',
       'packages/nativewindui/nativewind-env.d.ts.ejs',
-      'packages/nativewindui/metro.config.js.ejs',
-      'packages/nativewindui/global.css.ejs',
-      'packages/nativewindui/expo-env.d.ts.ejs'
+      'packages/nativewindui/global.css.ejs'
     ];
+
+    const nativeWindUIStackFiles = [
+      'packages/nativewindui/stack/app/_layout.tsx.ejs',
+      'packages/nativewindui/stack/app/index.tsx.ejs',
+      'packages/nativewindui/stack/app/modal.tsx.ejs',
+      'packages/nativewindui/stack/app/+not-found.tsx.ejs',
+      'packages/nativewindui/stack/app/+html.tsx.ejs'
+    ];
+
+    const nativewindUITabsFiles = [
+      'packages/nativewindui/tabs/app/(tabs)/_layout.tsx.ejs',
+      'packages/nativewindui/tabs/app/(tabs)/index.tsx.ejs',
+      'packages/nativewindui/tabs/app/(tabs)/two.tsx.ejs',
+      'packages/nativewindui/tabs/app/_layout.tsx.ejs',
+      'packages/nativewindui/tabs/app/modal.tsx.ejs',
+      'packages/nativewindui/tabs/app/+not-found.tsx.ejs',
+      'packages/nativewindui/tabs/app/+html.tsx.ejs'
+    ];
+
+    const nativewindUIDrawerFiles = [
+      'packages/nativewindui/drawer/app/_layout.tsx.ejs',
+      'packages/nativewindui/drawer/app/(drawer)/_layout.tsx.ejs',
+      'packages/nativewindui/drawer/app/(drawer)/index.tsx.ejs',
+      'packages/nativewindui/drawer/app/(drawer)/(tabs)/_layout.tsx.ejs',
+      'packages/nativewindui/drawer/app/(drawer)/(tabs)/index.tsx.ejs',
+      'packages/nativewindui/drawer/app/(drawer)/(tabs)/two.tsx.ejs',
+      'packages/nativewindui/drawer/app/modal.tsx.ejs',
+      'packages/nativewindui/drawer/app/+not-found.tsx.ejs',
+      'packages/nativewindui/drawer/app/+html.tsx.ejs'
+    ];
+
+    if (navigationPackage?.options?.type === 'stack') {
+      nativewindUIFiles = [...nativewindUIFiles, ...nativeWindUIStackFiles];
+    } else if (navigationPackage?.options?.type === 'tabs') {
+      nativewindUIFiles = [...nativewindUIFiles, ...nativewindUITabsFiles];
+    } else if (navigationPackage?.options?.type === 'drawer + tabs') {
+      nativewindUIFiles = [...nativewindUIFiles, ...nativewindUIDrawerFiles];
+    }
 
     if (stylingPackage?.options.selectedComponents.includes('activity-indicator')) {
       nativewindUIFiles = [
@@ -260,7 +311,7 @@ export function configureProjectFiles(
         expoRouterFiles.push('packages/unistyles/components/Button.tsx.ejs');
       } else if (stylingPackage?.name === 'tamagui') {
         expoRouterFiles.push('packages/tamagui/components/Button.tsx.ejs');
-      } else {
+      } else if (stylingPackage?.name === 'stylesheet') {
         expoRouterFiles.push('base/components/Button.tsx.ejs');
       }
 
@@ -317,7 +368,7 @@ export function configureProjectFiles(
 
     // add supabase files if needed
     if (authenticationPackage?.name === 'supabase') {
-      const supabaseFiles = ['packages/supabase/utils/supabase.ts.ejs', 'packages/supabase/.env'];
+      const supabaseFiles = ['packages/supabase/utils/supabase.ts.ejs', 'packages/supabase/.env.ejs'];
 
       files = [...files, ...supabaseFiles];
     }
@@ -327,7 +378,7 @@ export function configureProjectFiles(
       const firebaseFiles = [
         'packages/firebase/utils/firebase.ts.ejs',
         'packages/firebase/metro.config.js.ejs',
-        'packages/firebase/.env'
+        'packages/firebase/.env.ejs'
       ];
 
       files = [...files, ...firebaseFiles];
@@ -337,6 +388,11 @@ export function configureProjectFiles(
     if (stateManagementPackage?.name === 'zustand') {
       const zustandFiles = ['packages/zustand/StateManagement/zustandStore.ts.ejs'];
       files = [...files, ...zustandFiles];
+    // add vexo analytics files if needed
+    if (analyticsPackage?.name == 'vexo-analytics') {
+      const vexoFiles = ['packages/vexo-analytics/.env.ejs'];
+
+      files = [...files, ...vexoFiles];
     }
 
     // add i18next files if needed
@@ -354,6 +410,50 @@ export function configureProjectFiles(
       files = [...files, ...i18nextFiles];
     }
   }
+
+  const packageManagerVersion = getVersionForPackageManager(cliResults.flags.packageManager);
+
+  const cesConfig = {
+    // Add the version of create expo stack used
+    cesVersion: require('../../package.json').version || '2.0.0',
+    ...cliResults,
+    packageManager: {
+      type: cliResults.flags.packageManager,
+      version: packageManagerVersion
+    },
+    os: {
+      type: os.type(),
+      platform: os.platform(),
+      arch: os.arch(),
+      kernelVersion: os.release()
+    }
+  };
+
+  toolbox.filesystem.write(`./${cliResults.projectName}/cesconfig.json`, JSON.stringify(cesConfig, null, 2));
+
+  const pkg = require('../../package.json');
+
+  storeConfigAnalytics({
+    timestamp: new Date().toISOString(),
+    cesVersion: pkg.version,
+    authType: authenticationPackage?.name as AuthenticationSelect,
+    navigationLibrary: navigationPackage?.name as NavigationSelect,
+    navigationType: navigationPackage?.options?.type as NavigationTypes,
+    stylingLibrary: stylingPackage?.name as StylingSelect,
+    packageManager: cliResults.flags.packageManager,
+    packageManagerVersion,
+    internalization: internalizationPackage?.name as Internalization,
+    nativeWindUIComponents: stylingPackage?.options?.selectedComponents,
+    eas: cliResults.flags.eas,
+    importAlias: cliResults.flags.importAlias,
+    noGit: cliResults.flags.noGit,
+    noInstall: cliResults.flags.noInstall,
+    overwrite: cliResults.flags.overwrite,
+    os: os.type(),
+    osPlatform: os.platform(),
+    osArch: os.arch(),
+    osRelease: os.release()
+  });
 
   return files;
 }

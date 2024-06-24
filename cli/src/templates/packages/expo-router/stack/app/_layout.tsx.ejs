@@ -1,9 +1,7 @@
 <% if (props.stylingPackage?.name === "nativewind") { %>
-  import './global.css';
-<% } else if (props.stylingPackage?.name === "nativewinui") { %>
-  import './global.css';
-  import 'expo-dev-client';
+  import '../global.css';
 <% } %>
+
 <% if (props.stylingPackage?.name === "unistyles") { %>
 import '../unistyles';
 <% } %>
@@ -23,6 +21,12 @@ import '../unistyles';
   import { theme } from 'theme';
 <% } %>
 	import { Stack } from "expo-router";
+
+<% if (props.analyticsPackage?.name === "vexo-analytics") { %>
+  import { vexo } from 'vexo-analytics';
+
+  vexo(process.env.EXPO_PUBLIC_VEXO_API_KEY);
+<% } %>
 
 export default function Layout() {
 

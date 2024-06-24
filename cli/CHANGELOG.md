@@ -1,5 +1,155 @@
 # create-expo-stack
 
+## 2.10.5
+
+### Patch Changes
+
+- [#325](https://github.com/danstepanov/create-expo-stack/pull/325) [`c39f05700dfd8eaca2d9eeb55d3dc5ad787e5846`](https://github.com/danstepanov/create-expo-stack/commit/c39f05700dfd8eaca2d9eeb55d3dc5ad787e5846) Thanks [@dannyhw](https://github.com/dannyhw)! - config analytics
+
+- [#329](https://github.com/danstepanov/create-expo-stack/pull/329) [`0aee6404d69b5df0c47b5c44bc076b477ae22d02`](https://github.com/danstepanov/create-expo-stack/commit/0aee6404d69b5df0c47b5c44bc076b477ae22d02) Thanks [@Savinvadim1312](https://github.com/Savinvadim1312)! - Pass down props for button components
+
+- [`0aafcb2f1b8cb849a4beb8f98e44ac1817a736c9`](https://github.com/danstepanov/create-expo-stack/commit/0aafcb2f1b8cb849a4beb8f98e44ac1817a736c9) Thanks [@danstepanov](https://github.com/danstepanov)! - add ces version to cesconfig.json
+
+- [#328](https://github.com/danstepanov/create-expo-stack/pull/328) [`486a9402b30239a68cb44497f98b7d44a7f4d67c`](https://github.com/danstepanov/create-expo-stack/commit/486a9402b30239a68cb44497f98b7d44a7f4d67c) Thanks [@Savinvadim1312](https://github.com/Savinvadim1312)! - Fix tamagui button
+
+- [`7b6454f123c010d57f3e3f542682f9a76a774d6c`](https://github.com/danstepanov/create-expo-stack/commit/7b6454f123c010d57f3e3f542682f9a76a774d6c) Thanks [@danstepanov](https://github.com/danstepanov)! - add missing analytics dependencies
+
+- [`910f13c11db2064037e1e0a44c27966e8945574f`](https://github.com/danstepanov/create-expo-stack/commit/910f13c11db2064037e1e0a44c27966e8945574f) Thanks [@danstepanov](https://github.com/danstepanov)! - properly set noGit and noInstall for analytics
+
+## 2.10.4
+
+### Patch Changes
+
+- [`187960d4a592621669aec033a873ea8548f5766a`](https://github.com/danstepanov/create-expo-stack/commit/187960d4a592621669aec033a873ea8548f5766a) Thanks [@danstepanov](https://github.com/danstepanov)! - generate cesconfig file for each project
+
+## 2.10.3
+
+### Patch Changes
+
+- [#319](https://github.com/danstepanov/create-expo-stack/pull/319) [`4cc5073ac9ed7aabbe0ac2d860f3297fbb142f72`](https://github.com/danstepanov/create-expo-stack/commit/4cc5073ac9ed7aabbe0ac2d860f3297fbb142f72) Thanks [@Savinvadim1312](https://github.com/Savinvadim1312)! - Fix unneceserry import of nativewind when not required
+
+## 2.10.2
+
+### Patch Changes
+
+- [`1c600c2c1883b8b6f1333c2abf86af87570d840f`](https://github.com/danstepanov/create-expo-stack/commit/1c600c2c1883b8b6f1333c2abf86af87570d840f) Thanks [@danstepanov](https://github.com/danstepanov)! - change output message
+
+## 2.10.1
+
+### Patch Changes
+
+- [`3cfeb00ce4fde284b1a0d0928e8332848877872b`](https://github.com/danstepanov/create-expo-stack/commit/3cfeb00ce4fde284b1a0d0928e8332848877872b) Thanks [@danstepanov](https://github.com/danstepanov)! - use npx expo prebuild instead of npm run expo prebuild
+
+## 2.10.0
+
+### Minor Changes
+
+- [`ccee444990d1934728335ee8f9f79ff4005b1083`](https://github.com/danstepanov/create-expo-stack/commit/ccee444990d1934728335ee8f9f79ff4005b1083) Thanks [@danstepanov](https://github.com/danstepanov)! - move nativewindui into styles
+
+## 2.9.10
+
+### Patch Changes
+
+- [#307](https://github.com/danstepanov/create-expo-stack/pull/307) [`48765934e887d161527510cbd54d0caf15a09154`](https://github.com/danstepanov/create-expo-stack/commit/48765934e887d161527510cbd54d0caf15a09154) Thanks [@dannyhw](https://github.com/dannyhw)! - exits when eas and no install are chosen together since its not possible
+
+- [`695ba1bd4e6b5ac4f42b171b0fb240567fe6201a`](https://github.com/danstepanov/create-expo-stack/commit/695ba1bd4e6b5ac4f42b171b0fb240567fe6201a) Thanks [@danstepanov](https://github.com/danstepanov)! - silence expo package upgrade messages
+
+- [#310](https://github.com/danstepanov/create-expo-stack/pull/310) [`7a32de0e40b97e8a6f8864b046454d8c0b6f2f0e`](https://github.com/danstepanov/create-expo-stack/commit/7a32de0e40b97e8a6f8864b046454d8c0b6f2f0e) Thanks [@dannyhw](https://github.com/dannyhw)! - fix: issues falling back to npm
+
+## 2.9.9
+
+### Patch Changes
+
+- [`b5340ed144795d1fd5e541cc47dbd60988ec67aa`](https://github.com/danstepanov/create-expo-stack/commit/b5340ed144795d1fd5e541cc47dbd60988ec67aa) Thanks [@danstepanov](https://github.com/danstepanov)! - add npmrc file for pnpm projects that use NativeWind and Expo Router
+
+## 2.9.8
+
+### Patch Changes
+
+- [`dc92e401ed0b23f54d76fb387b9160984fbf9ea8`](https://github.com/danstepanov/create-expo-stack/commit/dc92e401ed0b23f54d76fb387b9160984fbf9ea8) Thanks [@danstepanov](https://github.com/danstepanov)! - bump dependencies for nativewindui
+
+## 2.9.7
+
+### Patch Changes
+
+- [#299](https://github.com/danstepanov/create-expo-stack/pull/299) [`c79fbe4e2347697be8ed2632f7ebbe9018fda733`](https://github.com/danstepanov/create-expo-stack/commit/c79fbe4e2347697be8ed2632f7ebbe9018fda733) Thanks [@dannyhw](https://github.com/dannyhw)! - fixes npm logging too much on install
+
+## 2.9.6
+
+### Patch Changes
+
+- [#300](https://github.com/danstepanov/create-expo-stack/pull/300) [`5a80b6e72c6c0f5a36510a6a8893a38bb90f8fa0`](https://github.com/danstepanov/create-expo-stack/commit/5a80b6e72c6c0f5a36510a6a8893a38bb90f8fa0) Thanks [@danstepanov](https://github.com/danstepanov)! - add prebuild script to nativewindui
+
+## 2.9.5
+
+### Patch Changes
+
+- [#295](https://github.com/danstepanov/create-expo-stack/pull/295) [`c548fdc9f15bbd3b5ae634cbe8db9dbed5e1e12c`](https://github.com/danstepanov/create-expo-stack/commit/c548fdc9f15bbd3b5ae634cbe8db9dbed5e1e12c) Thanks [@mrzachnugent](https://github.com/mrzachnugent)! - Makes the dark mode android navigation bar more transparent for NativeWindUI
+
+## 2.9.4
+
+### Patch Changes
+
+- [`6bc5f0d7c6ab81ef9949c7ef2c14e840df2ac369`](https://github.com/danstepanov/create-expo-stack/commit/6bc5f0d7c6ab81ef9949c7ef2c14e840df2ac369) Thanks [@danstepanov](https://github.com/danstepanov)! - make onPress optional for nativewind buttonprops
+
+## 2.9.3
+
+### Patch Changes
+
+- [`e6bbd1c8b4687f44c9d1fd97b60b2ec3681eb822`](https://github.com/danstepanov/create-expo-stack/commit/e6bbd1c8b4687f44c9d1fd97b60b2ec3681eb822) Thanks [@danstepanov](https://github.com/danstepanov)! - upgrade expo dev client for sdk 51
+
+## 2.9.2
+
+### Patch Changes
+
+- [`5f606147aaf0d9e14f8a931a1d62d896dd91c785`](https://github.com/danstepanov/create-expo-stack/commit/5f606147aaf0d9e14f8a931a1d62d896dd91c785) Thanks [@danstepanov](https://github.com/danstepanov)! - add run to eas configure step because package managers
+
+## 2.9.1
+
+### Patch Changes
+
+- [`c4a0be252fb76dea20eb3a9c9cd99f15fa43387a`](https://github.com/danstepanov/create-expo-stack/commit/c4a0be252fb76dea20eb3a9c9cd99f15fa43387a) Thanks [@danstepanov](https://github.com/danstepanov)! - remove expo-router overrides and resolutions given recent upgrade to 3.5
+
+## 2.9.0
+
+### Minor Changes
+
+- [`4006505675681c232b6c41059de3d76d8276b89f`](https://github.com/danstepanov/create-expo-stack/commit/4006505675681c232b6c41059de3d76d8276b89f) Thanks [@danstepanov](https://github.com/danstepanov)! - prevent expo install from updating libraries
+
+### Patch Changes
+
+- [`f9397f45525c14715bbde5c736ea6698009afb41`](https://github.com/danstepanov/create-expo-stack/commit/f9397f45525c14715bbde5c736ea6698009afb41) Thanks [@danstepanov](https://github.com/danstepanov)! - upgrade to expo sdk 51
+
+- [#266](https://github.com/danstepanov/create-expo-stack/pull/266) [`2e19daf72e3243978554f7ec88377ff552bc8828`](https://github.com/danstepanov/create-expo-stack/commit/2e19daf72e3243978554f7ec88377ff552bc8828) Thanks [@dannyhw](https://github.com/dannyhw)! - Add option to setup eas
+
+## 2.8.0
+
+### Minor Changes
+
+- [`673f031f54b6006b90a68a66f8a775b6316e7cc9`](https://github.com/danstepanov/create-expo-stack/commit/673f031f54b6006b90a68a66f8a775b6316e7cc9) Thanks [@danstepanov](https://github.com/danstepanov)! - users can save their favorite configurations
+
+### Patch Changes
+
+- [`940dc326c5d7efed69a239a5326456e64c08d983`](https://github.com/danstepanov/create-expo-stack/commit/940dc326c5d7efed69a239a5326456e64c08d983) Thanks [@danstepanov](https://github.com/danstepanov)! - pipe version of create expo stack to git commit message
+
+## 2.7.5
+
+### Patch Changes
+
+- [`779bbe02d2d08ae0a86dd7e87298f6cb92835e48`](https://github.com/danstepanov/create-expo-stack/commit/779bbe02d2d08ae0a86dd7e87298f6cb92835e48) Thanks [@danstepanov](https://github.com/danstepanov)! - go back one directory for global.css if using expo router
+
+## 2.7.4
+
+### Patch Changes
+
+- [`30986447cb68ff8b6476adcb1b236487d1b34aea`](https://github.com/danstepanov/create-expo-stack/commit/30986447cb68ff8b6476adcb1b236487d1b34aea) Thanks [@danstepanov](https://github.com/danstepanov)! - revert last change pertaining to global css file path
+
+## 2.7.3
+
+### Patch Changes
+
+- [`28ec60d87d7ec53874008664c08e4d097861e9e3`](https://github.com/danstepanov/create-expo-stack/commit/28ec60d87d7ec53874008664c08e4d097861e9e3) Thanks [@danstepanov](https://github.com/danstepanov)! - add tilda in place of dot for global css file
+
 ## 2.7.2
 
 ### Patch Changes
