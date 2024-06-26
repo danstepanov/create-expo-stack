@@ -4,6 +4,7 @@ import { confirm, isCancel, cancel, multiselect, select, text } from '@clack/pro
 import { defaultOptions } from '../constants';
 import {
   AuthenticationSelect,
+  StateManagementSelect,
   CliResults,
   NavigationSelect,
   NavigationTypes,
@@ -404,6 +405,37 @@ export async function runCLI(toolbox: Toolbox, projectName: string): Promise<Cli
       cancel('Cancelled... 👋');
       return process.exit(0);
     }
+    if (authenticationSelect) {
+      cliResults.packages.push({ name: authenticationSelect as AuthenticationSelect, type: 'authentication' });
+    } else {
+      success(`No problem, skipping authentication for now.`);
+    }
+
+    const stateManagementSelect = await select({
+      message: 'What would you like to use for state management?',
+      options: [
+        { value: undefined, label: 'None' },
+        { value: 'zustand', label: 'Zustand' }
+        // { value: 'mobx', label: 'MobX' },
+      ]
+    });
+
+    if (isCancel(stateManagementSelect)) {
+      cancel('Cancelled... 👋');
+      return process.exit(0);
+    }
+
+    if (stateManagementSelect) {
+      cliResults.packages.push({ name: stateManagementSelect as StateManagementSelect, type: 'state_management' });
+      success(`You'll be using ${stateManagementSelect} for state management.`);
+    } else {
+      success(`No problem, skipping state management for now.`);
+    }
+
+    const internationalizationSelect = await confirm({
+      message: `What would you like to support internationalization?`,
+      initialValue: false
+    });
 
     await saveConfig({ name, cliResults });
   }

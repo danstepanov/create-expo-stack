@@ -20,7 +20,8 @@ export function configureProjectFiles(
   analyticsPackage: AvailablePackages | undefined,
   toolbox: Toolbox,
   cliResults: CliResults,
-  internalizationPackage: AvailablePackages | undefined
+  internalizationPackage: AvailablePackages | undefined,
+  stateManagementPackage: AvailablePackages | undefined
 ): string[] {
   // Define the files common to all templates to be generated
   let baseFiles = [
@@ -383,6 +384,10 @@ export function configureProjectFiles(
       files = [...files, ...firebaseFiles];
     }
 
+    // add state management files if needed
+    if (stateManagementPackage?.name === 'zustand') {
+      const zustandFiles = ['packages/zustand/StateManagement/zustandStore.ts.ejs'];
+      files = [...files, ...zustandFiles];
     // add vexo analytics files if needed
     if (analyticsPackage?.name == 'vexo-analytics') {
       const vexoFiles = ['packages/vexo-analytics/.env.ejs'];

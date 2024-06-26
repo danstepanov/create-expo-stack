@@ -292,6 +292,15 @@ const command: GluegunCommand = {
           });
         }
 
+        // State Management packages
+        if (options.zustand) {
+          // Add zustand package
+          cliResults.packages.push({
+            name: 'zustand',
+            type: 'state_management'
+          });
+        }
+
         // Internalization packages
         if (options.i18next) {
           cliResults.packages.push({
@@ -367,7 +376,6 @@ const command: GluegunCommand = {
         warning(`  ${generateRerunScript(cliResults)}`);
 
         const { packages } = cliResults;
-
         // Define props to be passed into the templates
         const authenticationPackage = packages.find((p) => p.type === 'authentication') || undefined;
         const navigationPackage = packages.find((p) => p.type === 'navigation') || undefined;
@@ -375,6 +383,9 @@ const command: GluegunCommand = {
         const stylingPackage = packages.find((p) => p.type === 'styling');
         const internalizationPackage = packages.find((p) => p.type === 'internationalization');
         const analyticsPackage = packages.find((p) => p.type === 'analytics');
+
+        //add the state management package if it is selected
+        const stateManagementPackage = packages.find((p) => p.type === 'state_management') || undefined;
 
         let files: string[] = [];
 
@@ -386,7 +397,8 @@ const command: GluegunCommand = {
           analyticsPackage,
           toolbox,
           cliResults,
-          internalizationPackage
+          internalizationPackage,
+          stateManagementPackage
         );
 
         // Once all the files are defined, format and generate them
@@ -402,7 +414,8 @@ const command: GluegunCommand = {
           packageManager,
           stylingPackage,
           toolbox,
-          internalizationPackage
+          internalizationPackage,
+          stateManagementPackage
         );
 
         await printOutput(cliResults, formattedFiles, toolbox, stylingPackage);
@@ -418,7 +431,7 @@ const command: GluegunCommand = {
       }
 
       // Delete all files with projectName
-      await removeAsync(cliResults.projectName);
+      // await removeAsync(cliResults.projectName);
 
       printSomethingWentWrong();
       throw err;
